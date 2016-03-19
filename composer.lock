@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "46480b445e12dab293556d0ea3e219e8",
-    "content-hash": "e1dd58421e7f31ec085850cc055ca2dd",
+    "hash": "f2137c2d046bcc2329d6e68f1b1f3eba",
+    "content-hash": "67bc15f3202d038b2a879def5d9e5e59",
     "packages": [
         {
             "name": "ramsey/uuid",

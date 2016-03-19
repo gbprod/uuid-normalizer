@@ -10,7 +10,7 @@
     },
     "require": {
         "php": ">=5.5.9",
-        "ramsey/uuid": "^1.0|^3.2",
+        "ramsey/uuid": "^3.0|^3.2",
         "symfony/serializer": "^2.3|^3.0"
     },
     "require-dev": {
