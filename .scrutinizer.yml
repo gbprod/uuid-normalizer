@@ -79,8 +79,8 @@ checks:
         more_specific_types_in_doc_comments: true
         avoid_unnecessary_concatenation: true
 
-coding_style:
-    php: {  }
-
 tools:
     external_code_coverage: true
+    php_code_sniffer:
+        config:
+            standard: "PSR2" 

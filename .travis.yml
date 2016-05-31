@@ -5,24 +5,23 @@ php:
   - '7.0'
 
 env:
+    - SERIALIZER_VERSION=2.3.* UUID_VERSION=3.4.*
+    - SERIALIZER_VERSION=2.7.* UUID_VERSION=3.4.*
+    - SERIALIZER_VERSION=2.8.* UUID_VERSION=3.4.*
+    - SERIALIZER_VERSION=3.0.* UUID_VERSION=3.4.*
+    - SERIALIZER_VERSION=2.3.* UUID_VERSION=3.3.*
+    - SERIALIZER_VERSION=2.7.* UUID_VERSION=3.3.*
+    - SERIALIZER_VERSION=2.8.* UUID_VERSION=3.3.*
+    - SERIALIZER_VERSION=3.0.* UUID_VERSION=3.3.*
     - SERIALIZER_VERSION=2.3.* UUID_VERSION=3.2.*
-    - SERIALIZER_VERSION=2.4.* UUID_VERSION=3.2.*
-    - SERIALIZER_VERSION=2.5.* UUID_VERSION=3.2.*
-    - SERIALIZER_VERSION=2.6.* UUID_VERSION=3.2.*
     - SERIALIZER_VERSION=2.7.* UUID_VERSION=3.2.*
     - SERIALIZER_VERSION=2.8.* UUID_VERSION=3.2.*
     - SERIALIZER_VERSION=3.0.* UUID_VERSION=3.2.*
     - SERIALIZER_VERSION=2.3.* UUID_VERSION=3.1.*
-    - SERIALIZER_VERSION=2.4.* UUID_VERSION=3.1.*
-    - SERIALIZER_VERSION=2.5.* UUID_VERSION=3.1.*
-    - SERIALIZER_VERSION=2.6.* UUID_VERSION=3.1.*
     - SERIALIZER_VERSION=2.7.* UUID_VERSION=3.1.*
     - SERIALIZER_VERSION=2.8.* UUID_VERSION=3.1.*
     - SERIALIZER_VERSION=3.0.* UUID_VERSION=3.1.*
     - SERIALIZER_VERSION=2.3.* UUID_VERSION=3.0.*
-    - SERIALIZER_VERSION=2.4.* UUID_VERSION=3.0.*
-    - SERIALIZER_VERSION=2.5.* UUID_VERSION=3.0.*
-    - SERIALIZER_VERSION=2.6.* UUID_VERSION=3.0.*
     - SERIALIZER_VERSION=2.7.* UUID_VERSION=3.0.*
     - SERIALIZER_VERSION=2.8.* UUID_VERSION=3.0.*
     - SERIALIZER_VERSION=3.0.* UUID_VERSION=3.0.*
@@ -31,7 +30,7 @@ before_script:
     - composer self-update
     - composer require symfony/serializer:${SERIALIZER_VERSION} --no-update
     - composer require ramsey/uuid:${UUID_VERSION} --no-update
-    - composer update --no-interaction --prefer-source
+    - composer update --no-interaction
 
 script:
     - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
@@ -39,3 +38,4 @@ script:
 after_success:
     - wget https://scrutinizer-ci.com/ocular.phar
     - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+    - bash <(curl -s https://codecov.io/bash)
