@@ -42,7 +42,7 @@ services:
     uuid_denormalizer:
         class: GBProd\UuidNormalizer\UuidDenormalizer
         tags:
-            - { name: serializer.denormalizer }
+            - { name: serializer.normalizer }
 ```
 
 Or using `xml`:
