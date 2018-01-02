@@ -1,5 +1,5 @@
 {
-    "name": "phpdave11/uuid-normalizer",
+    "name": "gbprod/uuid-normalizer",
     "description": "Normalizer to serialize Ramsey Uuid with Symfony Serializer",
     "type": "library",
     "autoload": {
