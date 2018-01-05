@@ -1,35 +1,27 @@
 language: php
 php:
-  - '5.5'
   - '5.6'
   - '7.0'
+  - '7.1'
+  - '7.2'
 
 env:
-    - SERIALIZER_VERSION=2.3.* UUID_VERSION=3.4.*
-    - SERIALIZER_VERSION=2.7.* UUID_VERSION=3.4.*
-    - SERIALIZER_VERSION=2.8.* UUID_VERSION=3.4.*
-    - SERIALIZER_VERSION=3.0.* UUID_VERSION=3.4.*
-    - SERIALIZER_VERSION=2.3.* UUID_VERSION=3.3.*
-    - SERIALIZER_VERSION=2.7.* UUID_VERSION=3.3.*
-    - SERIALIZER_VERSION=2.8.* UUID_VERSION=3.3.*
-    - SERIALIZER_VERSION=3.0.* UUID_VERSION=3.3.*
-    - SERIALIZER_VERSION=2.3.* UUID_VERSION=3.2.*
-    - SERIALIZER_VERSION=2.7.* UUID_VERSION=3.2.*
-    - SERIALIZER_VERSION=2.8.* UUID_VERSION=3.2.*
-    - SERIALIZER_VERSION=3.0.* UUID_VERSION=3.2.*
-    - SERIALIZER_VERSION=2.3.* UUID_VERSION=3.1.*
-    - SERIALIZER_VERSION=2.7.* UUID_VERSION=3.1.*
-    - SERIALIZER_VERSION=2.8.* UUID_VERSION=3.1.*
-    - SERIALIZER_VERSION=3.0.* UUID_VERSION=3.1.*
-    - SERIALIZER_VERSION=2.3.* UUID_VERSION=3.0.*
-    - SERIALIZER_VERSION=2.7.* UUID_VERSION=3.0.*
-    - SERIALIZER_VERSION=2.8.* UUID_VERSION=3.0.*
-    - SERIALIZER_VERSION=3.0.* UUID_VERSION=3.0.*
+    - SERIALIZER_VERSION=2.7.*
+    - SERIALIZER_VERSION=2.8.*
+    - SERIALIZER_VERSION=3.0.*
+    - SERIALIZER_VERSION=3.3.*
+    - SERIALIZER_VERSION=4.0.*
+
+matrix:
+    exclude:
+        - php: '5.6'
+          env: SERIALIZER_VERSION=4.0.*
+        - php: '7.0'
+          env: SERIALIZER_VERSION=4.0.*
 
 before_script:
     - composer self-update
     - composer require symfony/serializer:${SERIALIZER_VERSION} --no-update
-    - composer require ramsey/uuid:${UUID_VERSION} --no-update
     - composer update --no-interaction
 
 script:

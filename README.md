@@ -87,4 +87,8 @@ $serializer = new Serializer([
 
 ## Requirements
 
- * PHP 5.5+
+ * PHP 5.6+
+
+## Contributing
+
+Feel free to contribute, see [CONTRIBUTING.md](CONTRIBUTING.md) file for more informations.
