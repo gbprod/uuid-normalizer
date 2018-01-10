@@ -3,19 +3,20 @@
 namespace Tests\GBProd\UuidNormalizer;
 
 use GBProd\UuidNormalizer\UuidNormalizer;
+use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 
 /**
  * Tests for UuidNormalizer
- * 
+ *
  * @author gbprod <contact@gb-prod.fr>
  */
-class UuidNormalizerTest extends \PHPUnit_Framework_TestCase
+class UuidNormalizerTest extends TestCase
 {
     const UUID_SAMPLE = '110e8400-e29b-11d4-a716-446655440000';
-    
+
     private $normalizer;
-    
+
     public function setUp()
     {
         $this->normalizer = new UuidNormalizer();
@@ -26,7 +27,7 @@ class UuidNormalizerTest extends \PHPUnit_Framework_TestCase
             $this->normalizer->supportsNormalization(new \stdClass())
         );
     }
-    
+
     /**
      * @dataProvider uuidProvider
      */
@@ -43,15 +44,15 @@ class UuidNormalizerTest extends \PHPUnit_Framework_TestCase
             array(Uuid::uuid1()),
             array(Uuid::uuid3(Uuid::NAMESPACE_DNS, 'php.net')),
             array(Uuid::uuid4()),
-            array(Uuid::uuid5(Uuid::NAMESPACE_DNS, 'php.net')),   
-            array(Uuid::fromString(self::UUID_SAMPLE)),   
+            array(Uuid::uuid5(Uuid::NAMESPACE_DNS, 'php.net')),
+            array(Uuid::fromString(self::UUID_SAMPLE)),
         );
     }
-    
+
     public function testNormalize()
     {
         $uuid = Uuid::fromString(self::UUID_SAMPLE);
-        
+
         $this->assertEquals(
             self::UUID_SAMPLE,
             $this->normalizer->normalize($uuid)

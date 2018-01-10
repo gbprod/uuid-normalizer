@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file based on the
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/gbprod/uuid-normalizer/compare/v1.0.1...HEAD)
+ 
+ - Symfony 4 compatibility
 
 ## [v1.0.0](https://github.com/gbprod/uuid-normalizer/compare/v1.0.0...v1.0.1)
 
