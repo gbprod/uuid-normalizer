@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/gbprod/uuid-normalizer/compare/v1.1.0...HEAD)
 
+ - Changing licence
+
 ## [v1.1.0](https://github.com/gbprod/uuid-normalizer/compare/v1.0.1...v1.1.0)
  
  - Symfony 4 compatibility
