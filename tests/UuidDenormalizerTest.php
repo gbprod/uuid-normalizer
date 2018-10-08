@@ -5,6 +5,7 @@ namespace Tests\GBProd\UuidNormalizer;
 use GBProd\UuidNormalizer\UuidDenormalizer;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 
 /**
  * Tests for UuidDenormalizer
@@ -48,6 +49,16 @@ class UuidDenormalizerTest extends TestCase
             $this->denormalizer->supportsDenormalization(
                 self::UUID_SAMPLE,
                 Uuid::class
+            )
+        );
+    }
+
+    public function testSupportsIsTrueIfTypeIsUuidInterface()
+    {
+        $this->assertTrue(
+            $this->denormalizer->supportsDenormalization(
+                self::UUID_SAMPLE,
+                UuidInterface::class
             )
         );
     }

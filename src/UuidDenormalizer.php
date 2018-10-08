@@ -3,11 +3,12 @@
 namespace GBProd\UuidNormalizer;
 
 use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 /**
  * Normalizer for Uuid
- * 
+ *
  * @author gbprod <contact@gb-prod.fr>
  */
 class UuidDenormalizer implements DenormalizerInterface
@@ -29,7 +30,7 @@ class UuidDenormalizer implements DenormalizerInterface
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return Uuid::class === $type 
+        return (Uuid::class === $type || UuidInterface::class === $type)
             && $this->isValid($data)
         ;
     }

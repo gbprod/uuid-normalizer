@@ -2,12 +2,12 @@
 
 namespace GBProd\UuidNormalizer;
 
-use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * Normalizer for Uuid
- * 
+ *
  * @author gbprod <contact@gb-prod.fr>
  */
 class UuidNormalizer implements NormalizerInterface
@@ -25,6 +25,6 @@ class UuidNormalizer implements NormalizerInterface
      */
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof Uuid;
+        return $data instanceof UuidInterface;
     }
 }
