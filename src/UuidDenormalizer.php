@@ -4,6 +4,7 @@ namespace GBProd\UuidNormalizer;
 
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
+use Symfony\Component\Serializer\Exception\UnexpectedValueException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 /**
@@ -18,6 +19,10 @@ class UuidDenormalizer implements DenormalizerInterface
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if (!$this->isValid($data)) {
+            throw new UnexpectedValueException('Expected a valid Uuid.');
+        }
+
         if (null === $data) {
             return null;
         }
@@ -30,15 +35,12 @@ class UuidDenormalizer implements DenormalizerInterface
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return (Uuid::class === $type || UuidInterface::class === $type)
-            && $this->isValid($data)
-        ;
+        return (Uuid::class === $type || UuidInterface::class === $type);
     }
 
     private function isValid($data)
     {
         return $data === null
-            || (is_string($data) && Uuid::isValid($data))
-        ;
+            || (is_string($data) && Uuid::isValid($data));
     }
 }

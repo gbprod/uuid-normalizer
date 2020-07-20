@@ -6,6 +6,7 @@ use GBProd\UuidNormalizer\UuidDenormalizer;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
+use Symfony\Component\Serializer\Exception\UnexpectedValueException;
 
 /**
  * Tests for UuidDenormalizer
@@ -16,6 +17,7 @@ class UuidDenormalizerTest extends TestCase
 {
     const UUID_SAMPLE = '110e8400-e29b-11d4-a716-446655440000';
 
+    /** @var UuidDenormalizer */
     private $denormalizer;
 
     public function setUp()
@@ -33,13 +35,13 @@ class UuidDenormalizerTest extends TestCase
         );
     }
 
-    public function testSupportsIsFalseIfNotWellFormatted()
+    public function testThrowExceptionIfNotWellFormatted()
     {
-        $this->assertFalse(
-            $this->denormalizer->supportsDenormalization(
-                'BAD_UUID',
-                Uuid::class
-            )
+        $this->expectException(UnexpectedValueException::class);
+
+        $this->denormalizer->denormalize(
+            'BAD_UUID',
+            Uuid::class
         );
     }
 
@@ -59,16 +61,6 @@ class UuidDenormalizerTest extends TestCase
             $this->denormalizer->supportsDenormalization(
                 self::UUID_SAMPLE,
                 UuidInterface::class
-            )
-        );
-    }
-
-    public function testSupportsIsFalseIfBadType()
-    {
-        $this->assertFalse(
-            $this->denormalizer->supportsDenormalization(
-                42,
-                Uuid::class
             )
         );
     }
