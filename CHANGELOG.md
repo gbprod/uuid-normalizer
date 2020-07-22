@@ -3,11 +3,15 @@
 All notable changes to this project will be documented in this file based on the [Keep a Changelog](http://keepachangelog.com/) Standard.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/gbprod/uuid-normalizer/compare/v1.2.0...HEAD)
+## [Unreleased](https://github.com/gbprod/uuid-normalizer/compare/v1.2.1...HEAD)
+
+- Drop php < 7.2 and Symfony unmaintained version
+
+## [v1.2.1](https://github.com/gbprod/uuid-normalizer/compare/v1.2.0...HEAD)
 
 - Fix array of UuidInterface deserialization (#12)
 
-## [Unreleased](https://github.com/gbprod/uuid-normalizer/compare/v1.1.0...v1.2.0)
+## [v1.2.0](https://github.com/gbprod/uuid-normalizer/compare/v1.1.0...v1.2.0)
 
 - Update dependencies to php 8, Symfony 5 and Ramsey Uuid 4
 - Changing licence

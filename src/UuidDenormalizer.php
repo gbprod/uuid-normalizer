@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace GBProd\UuidNormalizer;
 
 use Ramsey\Uuid\Uuid;
@@ -17,7 +19,7 @@ class UuidDenormalizer implements DenormalizerInterface
     /**
      * @inheritdoc
      */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize($data, $type, $format = null, array $context = [])
     {
         if (!$this->isValid($data)) {
             throw new UnexpectedValueException('Expected a valid Uuid.');

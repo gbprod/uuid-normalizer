@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\GBProd\UuidNormalizer;
 
 use GBProd\UuidNormalizer\UuidDenormalizer;
@@ -20,12 +22,12 @@ class UuidDenormalizerTest extends TestCase
     /** @var UuidDenormalizer */
     private $denormalizer;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->denormalizer = new UuidDenormalizer();
     }
 
-    public function testSupportsIsFalseIfNotUuidClass()
+    public function testSupportsIsFalseIfNotUuidClass(): void
     {
         $this->assertFalse(
             $this->denormalizer->supportsDenormalization(
@@ -35,7 +37,7 @@ class UuidDenormalizerTest extends TestCase
         );
     }
 
-    public function testThrowExceptionIfNotWellFormatted()
+    public function testThrowExceptionIfNotWellFormatted(): void
     {
         $this->expectException(UnexpectedValueException::class);
 
@@ -45,7 +47,7 @@ class UuidDenormalizerTest extends TestCase
         );
     }
 
-    public function testSupportsIsTrueIfRealUuid()
+    public function testSupportsIsTrueIfRealUuid(): void
     {
         $this->assertTrue(
             $this->denormalizer->supportsDenormalization(
@@ -55,7 +57,7 @@ class UuidDenormalizerTest extends TestCase
         );
     }
 
-    public function testSupportsIsTrueIfTypeIsUuidInterface()
+    public function testSupportsIsTrueIfTypeIsUuidInterface(): void
     {
         $this->assertTrue(
             $this->denormalizer->supportsDenormalization(
@@ -65,7 +67,7 @@ class UuidDenormalizerTest extends TestCase
         );
     }
 
-    public function testSupportsIsTrueIfNull()
+    public function testSupportsIsTrueIfNull(): void
     {
         $this->assertTrue(
             $this->denormalizer->supportsDenormalization(
@@ -75,7 +77,7 @@ class UuidDenormalizerTest extends TestCase
         );
     }
 
-    public function testDenormalize()
+    public function testDenormalize(): void
     {
         $uuid = Uuid::fromString(self::UUID_SAMPLE);
 
@@ -85,7 +87,7 @@ class UuidDenormalizerTest extends TestCase
             )
         );
     }
-    public function testDenormalizeNull()
+    public function testDenormalizeNull(): void
     {
         $this->assertNull(
             $this->denormalizer->denormalize(null, Uuid::class)

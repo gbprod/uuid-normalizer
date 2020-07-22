@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace GBProd\UuidNormalizer;
 
 use Ramsey\Uuid\UuidInterface;
@@ -15,7 +17,7 @@ class UuidNormalizer implements NormalizerInterface
     /**
      * @inheritdoc
      */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize($object, $format = null, array $context = [])
     {
         return $object->toString();
     }
