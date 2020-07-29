@@ -14,8 +14,6 @@ Normalizer to serialize [Ramsey Uuid](https://github.com/ramsey/uuid) using [Sym
 
 ## Installation
 
-### With Composer
-
 ```bash
 composer require gbprod/uuid-normalizer
 ```
@@ -25,8 +23,10 @@ composer require gbprod/uuid-normalizer
 By default, [Symfony Serializer](https://github.com/symfony/serializer) can't handle serialization and deserialization of [Ramsey Uuid](https://github.com/ramsey/uuid).
 You will have that kind of errors:
 
-> Not a time-based UUID
-> 500 Internal Server Error - UnsupportedOperationException
+```
+Not a time-based UUID
+500 Internal Server Error - UnsupportedOperationException
+```
 
 ### Setup
 
@@ -87,7 +87,7 @@ $serializer = new Serializer([
 
 ## Requirements
 
-- PHP 5.6+
+- PHP 7.2+
 
 ## Contributing
 

@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\GBProd\UuidNormalizer;
 
 use GBProd\UuidNormalizer\UuidNormalizer;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 
 /**
  * Tests for UuidNormalizer
@@ -17,11 +20,12 @@ class UuidNormalizerTest extends TestCase
 
     private $normalizer;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->normalizer = new UuidNormalizer();
     }
-    public function testSupportsIsFalseIfNotUuid()
+
+    public function testSupportsIsFalseIfNotUuid(): void
     {
         $this->assertFalse(
             $this->normalizer->supportsNormalization(new \stdClass())
@@ -31,14 +35,14 @@ class UuidNormalizerTest extends TestCase
     /**
      * @dataProvider uuidProvider
      */
-    public function testSupportsIsTrueIfUuid($uuid)
+    public function testSupportsIsTrueIfUuid(UuidInterface $uuid): void
     {
         $this->assertTrue(
             $this->normalizer->supportsNormalization($uuid)
         );
     }
 
-    public function uuidProvider()
+    public function uuidProvider(): array
     {
         return array(
             array(Uuid::uuid1()),
@@ -49,7 +53,7 @@ class UuidNormalizerTest extends TestCase
         );
     }
 
-    public function testNormalize()
+    public function testNormalize(): void
     {
         $uuid = Uuid::fromString(self::UUID_SAMPLE);
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\GBProd\UuidNormalizer;
 
 use GBProd\UuidNormalizer\UuidDenormalizer;
@@ -17,29 +19,24 @@ class DenormalizeUsingPhpDocTest extends TestCase
 {
     private $serializer;
 
-    public function setUp()
+    public function setUp(): void
     {
-        $normalizers = [
+        $this->serializer = new Serializer([
             new UuidNormalizer(),
             new UuidDenormalizer(),
             new ObjectNormalizer(
                 null,
                 null,
                 null,
-                class_exists('Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor') ? new PhpDocExtractor() : null
-            )
-        ];
-
-        if (class_exists('Symfony\Component\Serializer\Normalizer\ArrayDenormalizer')) {
-            $normalizers[] = new ArrayDenormalizer();
-        }
-
-        $this->serializer = new Serializer($normalizers, [
+                new PhpDocExtractor()
+            ),
+            new ArrayDenormalizer(),
+        ], [
             new JsonEncoder(),
         ]);
     }
 
-    public function testDenormalizeWithUuid()
+    public function testDenormalizeWithUuid(): void
     {
         $uuid = Uuid::uuid4();
         $denormalized = $this->serializer->denormalize(
@@ -50,7 +47,7 @@ class DenormalizeUsingPhpDocTest extends TestCase
         $this->assertEquals($uuid, $denormalized->uuid);
     }
 
-    public function testDenormalizeWithUuidInterface()
+    public function testDenormalizeWithUuidInterface(): void
     {
         $uuid = Uuid::uuid4();
         $denormalized = $this->serializer->denormalize(
@@ -61,7 +58,7 @@ class DenormalizeUsingPhpDocTest extends TestCase
         $this->assertEquals($uuid, $denormalized->uuid);
     }
 
-    public function testDenormalizeWithArrayOfUuid()
+    public function testDenormalizeWithArrayOfUuid(): void
     {
         $uuids = [
             Uuid::uuid1(),
@@ -80,7 +77,7 @@ class DenormalizeUsingPhpDocTest extends TestCase
         $this->assertEquals($uuids, $denormalized->uuids);
     }
 
-    public function testDenormalizeWithArrayOfUuidInterface()
+    public function testDenormalizeWithArrayOfUuidInterface(): void
     {
         $uuids = [
             Uuid::uuid1(),

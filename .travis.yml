@@ -1,33 +1,26 @@
 language: php
 php:
-  - '5.6'
-  - '7.0'
-  - '7.1'
-  - '7.2'
+  - "7.2"
+  - "7.3"
+  - "7.4"
 
 env:
-    - SERIALIZER_VERSION=2.7.*
-    - SERIALIZER_VERSION=2.8.*
-    - SERIALIZER_VERSION=3.0.*
-    - SERIALIZER_VERSION=3.3.*
-    - SERIALIZER_VERSION=4.0.*
-
-matrix:
-    exclude:
-        - php: '5.6'
-          env: SERIALIZER_VERSION=4.0.*
-        - php: '7.0'
-          env: SERIALIZER_VERSION=4.0.*
+  - SERIALIZER_VERSION=3.4.*
+  - SERIALIZER_VERSION=4.3.*
+  - SERIALIZER_VERSION=4.4.*
+  - SERIALIZER_VERSION=5.0.*
+  - SERIALIZER_VERSION=5.1.*
+  - SERIALIZER_VERSION=^5.0
 
 before_script:
-    - composer self-update
-    - composer require symfony/serializer:${SERIALIZER_VERSION} --no-update
-    - composer update --no-interaction
+  - composer self-update
+  - composer require symfony/serializer:${SERIALIZER_VERSION} --no-update
+  - composer update --no-interaction
 
 script:
-    - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+  - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
 
 after_success:
-    - wget https://scrutinizer-ci.com/ocular.phar
-    - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
-    - bash <(curl -s https://codecov.io/bash)
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+  - bash <(curl -s https://codecov.io/bash)
