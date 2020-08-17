@@ -3,7 +3,6 @@
 [![Build Status](https://travis-ci.org/gbprod/uuid-normalizer.svg?branch=master)](https://travis-ci.org/gbprod/uuid-normalizer)
 [![codecov](https://codecov.io/gh/gbprod/uuid-normalizer/branch/master/graph/badge.svg)](https://codecov.io/gh/gbprod/uuid-normalizer)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gbprod/uuid-normalizer/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gbprod/uuid-normalizer/?branch=master)
-[![Dependency Status](https://www.versioneye.com/user/projects/574a9caace8d0e004130d3aa/badge.svg)](https://www.versioneye.com/user/projects/574a9caace8d0e004130d3aa)
 
 [![Latest Stable Version](https://poser.pugx.org/gbprod/uuid-normalizer/v/stable)](https://packagist.org/packages/gbprod/uuid-normalizer)
 [![Total Downloads](https://poser.pugx.org/gbprod/uuid-normalizer/downloads)](https://packagist.org/packages/gbprod/uuid-normalizer)

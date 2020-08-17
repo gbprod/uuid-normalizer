@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased](https://github.com/gbprod/uuid-normalizer/compare/v1.2.1...HEAD)
 
 - Drop php < 7.2 and Symfony unmaintained version
+- Remove versioneye
 
 ## [v1.2.1](https://github.com/gbprod/uuid-normalizer/compare/v1.2.0...HEAD)
 
