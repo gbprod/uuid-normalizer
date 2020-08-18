@@ -1,6 +1,6 @@
 # Uuid normalizer
 
-[![Build Status](https://travis-ci.org/gbprod/uuid-normalizer.svg?branch=master)](https://travis-ci.org/gbprod/uuid-normalizer)
+[![Build Status](https://travis-ci.com/gbprod/uuid-normalizer.svg?branch=master)](https://travis-ci.com/gbprod/uuid-normalizer)
 [![codecov](https://codecov.io/gh/gbprod/uuid-normalizer/branch/master/graph/badge.svg)](https://codecov.io/gh/gbprod/uuid-normalizer)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gbprod/uuid-normalizer/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gbprod/uuid-normalizer/?branch=master)
 
