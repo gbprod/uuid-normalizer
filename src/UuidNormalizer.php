@@ -15,7 +15,11 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 class UuidNormalizer implements NormalizerInterface
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
+     *
+     * @param array<mixed> $context
+     *
+     * @return string
      */
     public function normalize($object, $format = null, array $context = [])
     {
@@ -23,7 +27,7 @@ class UuidNormalizer implements NormalizerInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function supportsNormalization($data, $format = null)
     {

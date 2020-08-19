@@ -8,11 +8,13 @@ use GBProd\UuidNormalizer\UuidDenormalizer;
 use GBProd\UuidNormalizer\UuidNormalizer;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
 class NormalizeTest extends TestCase
 {
+    /** @var Serializer */
     private $serializer;
 
     public function setUp(): void
@@ -28,7 +30,7 @@ class NormalizeTest extends TestCase
     {
         $uuid = Uuid::uuid4();
 
-        $normalized = $this->serializer->normalize(
+        $normalized = (array) $this->serializer->normalize(
             ['uuid' => $uuid]
         );
 
@@ -43,7 +45,7 @@ class NormalizeTest extends TestCase
         $object = new ClassWithUuid();
         $object->uuid = Uuid::uuid4();
 
-        $normalized = $this->serializer->normalize($object);
+        $normalized = (array) $this->serializer->normalize($object);
 
         $this->assertEquals(
             $object->uuid->toString(),
@@ -60,7 +62,7 @@ class NormalizeTest extends TestCase
             Uuid::uuid4(),
         ];
 
-        $normalized = $this->serializer->normalize($object);
+        $normalized = (array) $this->serializer->normalize($object);
 
         $this->assertEquals(
             $object->uuid[0]->toString(),
@@ -71,5 +73,6 @@ class NormalizeTest extends TestCase
 
 class ClassWithUuid
 {
+    /** @var UuidInterface|array<UuidInterface> */
     public $uuid;
 }

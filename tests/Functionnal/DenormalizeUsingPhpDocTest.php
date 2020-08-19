@@ -17,6 +17,7 @@ use Symfony\Component\Serializer\Serializer;
 
 class DenormalizeUsingPhpDocTest extends TestCase
 {
+    /** @var Serializer */
     private $serializer;
 
     public function setUp(): void
@@ -39,23 +40,23 @@ class DenormalizeUsingPhpDocTest extends TestCase
     public function testDenormalizeWithUuid(): void
     {
         $uuid = Uuid::uuid4();
-        $denormalized = $this->serializer->denormalize(
+        $denormalized = (array) $this->serializer->denormalize(
             ['uuid' => $uuid->toString()],
             ClassWithUuidAttribute::class
         );
 
-        $this->assertEquals($uuid, $denormalized->uuid);
+        $this->assertEquals($uuid, $denormalized['uuid']);
     }
 
     public function testDenormalizeWithUuidInterface(): void
     {
         $uuid = Uuid::uuid4();
-        $denormalized = $this->serializer->denormalize(
+        $denormalized = (array) $this->serializer->denormalize(
             ['uuid' => $uuid->toString()],
             ClassWithUuidInterfaceAttribute::class
         );
 
-        $this->assertEquals($uuid, $denormalized->uuid);
+        $this->assertEquals($uuid, $denormalized['uuid']);
     }
 
     public function testDenormalizeWithArrayOfUuid(): void
@@ -67,14 +68,14 @@ class DenormalizeUsingPhpDocTest extends TestCase
             Uuid::uuid5(Uuid::NAMESPACE_DNS, 'php.net'),
         ];
 
-        $denormalized = $this->serializer->denormalize(
+        $denormalized = (array) $this->serializer->denormalize(
             ['uuids' => array_map(function ($uuid) {
                 return $uuid->toString();
             }, $uuids)],
             ClassWithArrayOfUuidAttribute::class
         );
 
-        $this->assertEquals($uuids, $denormalized->uuids);
+        $this->assertEquals($uuids, $denormalized['uuids']);
     }
 
     public function testDenormalizeWithArrayOfUuidInterface(): void
@@ -86,14 +87,14 @@ class DenormalizeUsingPhpDocTest extends TestCase
             Uuid::uuid5(Uuid::NAMESPACE_DNS, 'php.net'),
         ];
 
-        $denormalized = $this->serializer->denormalize(
+        $denormalized = (array) $this->serializer->denormalize(
             ['uuids' => array_map(function ($uuid) {
                 return $uuid->toString();
             }, $uuids)],
             ClassWithArrayOfUuidInterfaceAttribute::class
         );
 
-        $this->assertEquals($uuids, $denormalized->uuids);
+        $this->assertEquals($uuids, $denormalized['uuids']);
     }
 }
 

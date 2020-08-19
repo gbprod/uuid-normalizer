@@ -19,12 +19,13 @@
   },
   "require-dev": {
     "phpunit/phpunit": "^8.0",
-    "symfony/property-access": "^3.4|^4.3|^5.0"
+    "symfony/property-access": "^3.4|^4.3|^5.0",
+    "phpstan/phpstan": "^0.12.37"
   },
   "license": "WTFPL",
   "authors": [
     {
-      "name": "GBProd",
+      "name": "gbprod",
       "email": "contact@gb-prod.fr"
     }
   ]
