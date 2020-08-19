@@ -1,4 +1,4 @@
-.PHONY: install test-unit test-coverage
+.PHONY: install test-unit test-coverage analyse
 
 PHP?=php
 COMPOSER?=composer
@@ -16,3 +16,6 @@ vendor: composer.lock
 
 composer.lock: composer.json
 	$(COMPOSER) update
+
+analyse: install
+	$(PHP) vendor/bin/phpstan analyse --level max ./src ./tests

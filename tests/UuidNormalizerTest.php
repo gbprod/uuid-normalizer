@@ -18,6 +18,7 @@ class UuidNormalizerTest extends TestCase
 {
     const UUID_SAMPLE = '110e8400-e29b-11d4-a716-446655440000';
 
+    /** @var UuidNormalizer */
     private $normalizer;
 
     public function setUp(): void
@@ -42,6 +43,9 @@ class UuidNormalizerTest extends TestCase
         );
     }
 
+    /**
+     * @return array<array<UuidInterface>>
+     */
     public function uuidProvider(): array
     {
         return array(
