@@ -14,7 +14,7 @@ env:
 
 before_script:
   - composer self-update
-  - composer require symfony/serializer:${SERIALIZER_VERSION} --no-update
+  - composer require symfony/serializer:${SERIALIZER_VERSION} symfony/http-kernel:${SERIALIZER_VERSION} --no-update
   - composer update --no-interaction
 
 script:
