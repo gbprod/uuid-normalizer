@@ -3,9 +3,17 @@
 All notable changes to this project will be documented in this file based on the [Keep a Changelog](http://keepachangelog.com/) Standard.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/gbprod/uuid-normalizer/compare/v1.2.1...HEAD)
+## [v1.3.0](https://github.com/gbprod/uuid-normalizer/compare/v1.2.2...v1.3.0)
 
-- Drop php < 7.2 and Symfony unmaintained version
+- Drop php `<7.4` and Symfony `<=5.4`
+- Remove scrutinizer & travis
+- Use Github actions
+- Fix Sf 6.1 deprecation warnings
+
+## [v1.2.2](https://github.com/gbprod/uuid-normalizer/compare/v1.2.1...v1.2.2)
+
+- Symfony 6 support
+- Drop php `< 7.2` and Symfony unmaintained version
 - Remove versioneye
 - Upgrade scrutinizer & travis
 

@@ -15,7 +15,8 @@ class UuidNormalizer implements NormalizerInterface
     /**
      * {@inheritdoc}
      *
-     * @param array<mixed> $context
+     * @param array<mixed>  $context
+     * @param UuidInterface $object
      *
      * @return string
      */
@@ -26,8 +27,10 @@ class UuidNormalizer implements NormalizerInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @param array<mixed> $context
      */
-    public function supportsNormalization($data, $format = null, array $context = []): bool
+    public function supportsNormalization($data, $format = null, array $context = [])
     {
         return $data instanceof UuidInterface;
     }

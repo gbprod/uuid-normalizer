@@ -19,3 +19,4 @@ composer.lock: composer.json
 
 analyse: install
 	$(PHP) vendor/bin/phpstan analyse --level max ./src ./tests
+

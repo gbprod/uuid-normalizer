@@ -25,12 +25,12 @@ class UuidDenormalizer implements DenormalizerInterface
      */
     public function denormalize($data, $type, $format = null, array $context = [])
     {
-        if (!$this->isValid($data)) {
-            throw new UnexpectedValueException('Expected a valid Uuid.');
-        }
-
         if (null === $data) {
             return null;
+        }
+
+        if (!\is_string($data) || !Uuid::isValid($data)) {
+            throw new UnexpectedValueException('Expected a valid Uuid.');
         }
 
         return Uuid::fromString($data);
@@ -38,18 +38,11 @@ class UuidDenormalizer implements DenormalizerInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @param array<mixed> $context
      */
-    public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
+    public function supportsDenormalization($data, string $type, string $format = null, array $context = [])
     {
         return Uuid::class === $type || UuidInterface::class === $type;
-    }
-
-    /**
-     * @param mixed $data
-     */
-    private function isValid($data): bool
-    {
-        return null === $data
-            || (\is_string($data) && Uuid::isValid($data));
     }
 }
