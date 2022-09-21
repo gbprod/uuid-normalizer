@@ -10,9 +10,7 @@ use Symfony\Component\Serializer\Exception\UnexpectedValueException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 /**
- * Normalizer for Uuid
- *
- * @author gbprod <contact@gb-prod.fr>
+ * Normalizer for Uuid.
  */
 class UuidDenormalizer implements DenormalizerInterface
 {
@@ -21,9 +19,9 @@ class UuidDenormalizer implements DenormalizerInterface
      *
      * @param array<mixed> $context
      *
-     * @return UuidInterface|null
-     *
      * @throws UnexpectedValueException
+     *
+     * @return UuidInterface|null
      */
     public function denormalize($data, $type, $format = null, array $context = [])
     {
@@ -41,9 +39,9 @@ class UuidDenormalizer implements DenormalizerInterface
     /**
      * {@inheritdoc}
      */
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
     {
-        return (Uuid::class === $type || UuidInterface::class === $type);
+        return Uuid::class === $type || UuidInterface::class === $type;
     }
 
     /**
@@ -51,7 +49,7 @@ class UuidDenormalizer implements DenormalizerInterface
      */
     private function isValid($data): bool
     {
-        return $data === null
-            || (is_string($data) && Uuid::isValid($data));
+        return null === $data
+            || (\is_string($data) && Uuid::isValid($data));
     }
 }

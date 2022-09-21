@@ -8,9 +8,7 @@ use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
- * Normalizer for Uuid
- *
- * @author gbprod <contact@gb-prod.fr>
+ * Normalizer for Uuid.
  */
 class UuidNormalizer implements NormalizerInterface
 {
@@ -29,7 +27,7 @@ class UuidNormalizer implements NormalizerInterface
     /**
      * {@inheritdoc}
      */
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return $data instanceof UuidInterface;
     }
