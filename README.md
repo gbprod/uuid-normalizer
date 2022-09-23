@@ -1,13 +1,9 @@
 # Uuid normalizer
 
-[![Build Status](https://travis-ci.com/gbprod/uuid-normalizer.svg?branch=master)](https://travis-ci.com/gbprod/uuid-normalizer)
-[![codecov](https://codecov.io/gh/gbprod/uuid-normalizer/branch/master/graph/badge.svg)](https://codecov.io/gh/gbprod/uuid-normalizer)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gbprod/uuid-normalizer/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gbprod/uuid-normalizer/?branch=master)
-
+[![Tests](https://github.com/gbprod/uuid-normalizer/actions/workflows/ci.yaml/badge.svg)](https://github.com/gbprod/uuid-normalizer/actions/workflows/ci.yaml)
 [![Latest Stable Version](https://poser.pugx.org/gbprod/uuid-normalizer/v/stable)](https://packagist.org/packages/gbprod/uuid-normalizer)
 [![Total Downloads](https://poser.pugx.org/gbprod/uuid-normalizer/downloads)](https://packagist.org/packages/gbprod/uuid-normalizer)
 [![Latest Unstable Version](https://poser.pugx.org/gbprod/uuid-normalizer/v/unstable)](https://packagist.org/packages/gbprod/uuid-normalizer)
-[![License](https://poser.pugx.org/gbprod/uuid-normalizer/license)](https://packagist.org/packages/gbprod/uuid-normalizer)
 
 Normalizer to serialize [Ramsey Uuid](https://github.com/ramsey/uuid) using [Symfony Serializer](https://github.com/symfony/serializer).
 
@@ -86,7 +82,7 @@ $serializer = new Serializer([
 
 ## Requirements
 
-- PHP 7.2+
+- PHP 7.4+
 
 ## Contributing
 
