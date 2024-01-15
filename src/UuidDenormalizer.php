@@ -15,15 +15,11 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 class UuidDenormalizer implements DenormalizerInterface
 {
     /**
-     * {@inheritdoc}
-     *
      * @param array<mixed> $context
      *
      * @throws UnexpectedValueException
-     *
-     * @return UuidInterface|null
      */
-    public function denormalize($data, $type, $format = null, array $context = [])
+    public function denormalize($data, string $type, string $format = null, array $context = []): ?UuidInterface
     {
         if (null === $data) {
             return null;
@@ -37,12 +33,20 @@ class UuidDenormalizer implements DenormalizerInterface
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @param array<mixed> $context
      */
-    public function supportsDenormalization($data, string $type, string $format = null, array $context = [])
+    public function supportsDenormalization($data, string $type, string $format = null, array $context = []): bool
     {
         return Uuid::class === $type || UuidInterface::class === $type;
+    }
+
+    /**
+     * @return array<string, bool>
+     */
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            UuidInterface::class => true,
+        ];
     }
 }
