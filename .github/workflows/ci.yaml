@@ -1,44 +1,49 @@
 name: Tests
 
 on:
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
-  schedule:
-    - cron: "0 7 * * 1"
+    push:
+        branches: [master]
+    pull_request:
+        branches: [master]
+    schedule:
+        - cron: '0 7 * * 1'
 
 jobs:
-  unit-tests:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        php: ["7.4", "8.0", "8.1"]
-        sf: ["5.4.*", "6.0.*", "6.1.*"]
-        exclude:
-          - php: "7.4"
-            sf: "6.1.*"
-          - php: "8.0"
-            sf: "6.1.*"
-          - php: "7.4"
-            sf: "6.0.*"
-    steps:
-      - uses: actions/checkout@v2
-      - uses: php-actions/composer@v6
-        with:
-          php_version: "${{ matrix.php }}"
-          command: require symfony/serializer:${{ matrix.sf }} --no-update
-      - uses: php-actions/composer@v6
-        with:
-          php_version: "${{ matrix.php }}"
-          command: update
-      - uses: php-actions/phpunit@v3
-        with:
-          configuration: phpunit.xml.dist
-          memory_limit: 256M
-          php_version: "${{ matrix.php }}"
-      - uses: php-actions/phpstan@v3
-        with:
-          php_version: "${{ matrix.php }}"
-          level: max
-          path: src/
+    unit-tests:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                php: ['7.4', '8.0', '8.1', '8.2']
+                sf: ['5.4.*', '6.4.*', '7.0.*']
+                exclude:
+                    - php: '7.4'
+                      sf: '6.4.*'
+                    - php: '8.0'
+                      sf: '6.4.*'
+                    - php: '7.4'
+                      sf: '7.0.*'
+                    - php: '8.0'
+                      sf: '7.0.*'
+                    - php: '8.1'
+                      sf: '7.0.*'
+        steps:
+            - uses: actions/checkout@v2
+            - uses: php-actions/composer@v6
+              with:
+                  php_version: '${{ matrix.php }}'
+                  command: require symfony/serializer:${{ matrix.sf }} --no-update
+            - uses: php-actions/composer@v6
+              with:
+                  php_version: '${{ matrix.php }}'
+                  command: update
+            - uses: php-actions/phpunit@v3
+              with:
+                  configuration: phpunit.xml.dist
+                  memory_limit: 256M
+                  php_version: '${{ matrix.php }}'
+                  version: 9.5
+            - uses: php-actions/phpstan@v3
+              with:
+                  php_version: '${{ matrix.php }}'
+                  level: max
+                  path: src/
