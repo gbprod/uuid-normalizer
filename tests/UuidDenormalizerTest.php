@@ -6,6 +6,7 @@ namespace Tests\GBProd\UuidNormalizer;
 
 use GBProd\UuidNormalizer\UuidDenormalizer;
 use PHPUnit\Framework\TestCase;
+use Ramsey\Uuid\Rfc4122\UuidV1;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Exception\UnexpectedValueException;
@@ -91,6 +92,16 @@ class UuidDenormalizerTest extends TestCase
     {
         $this->assertNull(
             $this->denormalizer->denormalize(null, Uuid::class)
+        );
+    }
+
+    public function testSupportsIsTrueIfTypeImplementsUuidInterface(): void
+    {
+        $this->assertTrue(
+            $this->denormalizer->supportsDenormalization(
+                self::UUID_SAMPLE,
+                UuidV1::class
+            )
         );
     }
 }
