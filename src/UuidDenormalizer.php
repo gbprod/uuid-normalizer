@@ -37,7 +37,7 @@ class UuidDenormalizer implements DenormalizerInterface
      */
     public function supportsDenormalization($data, string $type, string $format = null, array $context = []): bool
     {
-        return Uuid::class === $type || UuidInterface::class === $type;
+        return is_a($type, UuidInterface::class, true);
     }
 
     /**
