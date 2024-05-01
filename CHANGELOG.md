@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file based on the [Keep a Changelog](http://keepachangelog.com/) Standard.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased](https://github.com/gbprod/uuid-normalizer/compare/v1.3.0...HEAD)
+
+- Fix bug in supporting denormalization of classes implementing `UuidInterface` (#35)
+
 ## [v1.3.0](https://github.com/gbprod/uuid-normalizer/compare/v1.2.2...v1.3.0)
 
 - Drop php `<7.4` and Symfony `<=5.4`
