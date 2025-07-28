@@ -19,7 +19,7 @@ class UuidDenormalizer implements DenormalizerInterface
      *
      * @throws UnexpectedValueException
      */
-    public function denormalize($data, string $type, string $format = null, array $context = []): ?UuidInterface
+    public function denormalize($data, string $type, ?string $format = null, array $context = []): ?UuidInterface
     {
         if (null === $data) {
             return null;
@@ -35,7 +35,7 @@ class UuidDenormalizer implements DenormalizerInterface
     /**
      * @param array<mixed> $context
      */
-    public function supportsDenormalization($data, string $type, string $format = null, array $context = []): bool
+    public function supportsDenormalization($data, string $type, ?string $format = null, array $context = []): bool
     {
         return is_a($type, UuidInterface::class, true);
     }
