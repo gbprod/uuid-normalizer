@@ -13,15 +13,16 @@
     }
   },
   "require": {
-    "php": "^7.4|^8.0",
+    "php": "^8.2",
     "ramsey/uuid": "^4.0",
-    "symfony/serializer": "^5.4|^6.0|^7.0"
+    "symfony/serializer": "^6.4|^7.0|^8.0"
   },
   "require-dev": {
-    "symfony/property-access": "^5.4|^6.0|^7.0",
+    "symfony/property-access": "^6.4|^7.0|^8.0",
+    "symfony/property-info": "^6.4|^7.0|^8.0",
     "phpdocumentor/reflection-docblock": "^5.3",
-    "phpunit/phpunit": "^9.5",
-    "phpstan/phpstan": "^1.8"
+    "phpunit/phpunit": "^11.0",
+    "phpstan/phpstan": "^2.0"
   },
   "license": "WTFPL",
   "authors": [

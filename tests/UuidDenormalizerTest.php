@@ -20,8 +20,7 @@ class UuidDenormalizerTest extends TestCase
 {
     const UUID_SAMPLE = '110e8400-e29b-11d4-a716-446655440000';
 
-    /** @var UuidDenormalizer */
-    private $denormalizer;
+    private UuidDenormalizer $denormalizer;
 
     public function setUp(): void
     {
@@ -88,11 +87,11 @@ class UuidDenormalizerTest extends TestCase
             )
         );
     }
+
     public function testDenormalizeNull(): void
     {
-        $this->assertNull(
-            $this->denormalizer->denormalize(null, Uuid::class)
-        );
+        $result = $this->denormalizer->denormalize(null, Uuid::class);
+        $this->assertNull($result);
     }
 
     public function testSupportsIsTrueIfTypeImplementsUuidInterface(): void

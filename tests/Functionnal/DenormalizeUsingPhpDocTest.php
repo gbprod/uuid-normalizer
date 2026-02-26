@@ -17,8 +17,7 @@ use Symfony\Component\Serializer\Serializer;
 
 class DenormalizeUsingPhpDocTest extends TestCase
 {
-    /** @var Serializer */
-    private $serializer;
+    private Serializer $serializer;
 
     public function setUp(): void
     {
@@ -109,7 +108,6 @@ class ClassWithUuidInterfaceAttribute
     /** @var UuidInterface */
     public $uuid;
 }
-
 
 class ClassWithArrayOfUuidAttribute
 {

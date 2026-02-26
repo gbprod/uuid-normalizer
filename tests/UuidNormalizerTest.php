@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\GBProd\UuidNormalizer;
 
 use GBProd\UuidNormalizer\UuidNormalizer;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
@@ -18,8 +19,7 @@ class UuidNormalizerTest extends TestCase
 {
     const UUID_SAMPLE = '110e8400-e29b-11d4-a716-446655440000';
 
-    /** @var UuidNormalizer */
-    private $normalizer;
+    private UuidNormalizer $normalizer;
 
     public function setUp(): void
     {
@@ -33,9 +33,7 @@ class UuidNormalizerTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider uuidProvider
-     */
+    #[DataProvider('uuidProvider')]
     public function testSupportsIsTrueIfUuid(UuidInterface $uuid): void
     {
         $this->assertTrue(
@@ -46,7 +44,7 @@ class UuidNormalizerTest extends TestCase
     /**
      * @return array<array<UuidInterface>>
      */
-    public function uuidProvider(): array
+    public static function uuidProvider(): array
     {
         return array(
             array(Uuid::uuid1()),
