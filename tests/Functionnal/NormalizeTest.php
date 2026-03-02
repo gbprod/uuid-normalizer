@@ -14,8 +14,7 @@ use Symfony\Component\Serializer\Serializer;
 
 class NormalizeTest extends TestCase
 {
-    /** @var Serializer */
-    private $serializer;
+    private Serializer $serializer;
 
     public function setUp(): void
     {
@@ -64,6 +63,7 @@ class NormalizeTest extends TestCase
 
         $normalized = (array) $this->serializer->normalize($object);
 
+        /** @var array<string, array<string>> $normalized */
         $this->assertEquals(
             $object->uuid[0]->toString(),
             $normalized['uuid'][0]

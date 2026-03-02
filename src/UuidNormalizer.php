@@ -13,21 +13,21 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 class UuidNormalizer implements NormalizerInterface
 {
     /**
-     * @param array<mixed> $context
+     * @param array<string, mixed> $context
      */
-    public function normalize($object, $format = null, array $context = []): string
+    public function normalize(mixed $data, ?string $format = null, array $context = []): string
     {
-        if (!$object instanceof UuidInterface) {
+        if (!$data instanceof UuidInterface) {
             throw new \InvalidArgumentException('Expected a UuidInterface.');
         }
 
-        return $object->toString();
+        return $data->toString();
     }
 
     /**
-     * @param array<mixed> $context
+     * @param array<string, mixed> $context
      */
-    public function supportsNormalization($data, $format = null, array $context = []): bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return $data instanceof UuidInterface;
     }
